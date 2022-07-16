@@ -1,0 +1,35 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/destacados.css') }}" />
+{% endblock %}
+
+{% block contenido %}
+        <main>
+            <div class="vista">
+                <h2 class="titulo-destacados">Recorriendo Italia</h2><!--ESTE TITULO TIENE UNA ANIMACION-->
+            </div>
+            <h2 class="h2">Galeria de imagenes</h2> <!--ESTE TITULO TIENE UNA TRANSICION-->
+            <div class="separacion"></div>
+
+            {% for imagen in destacados %}   
+            <section>
+                <div class="responsive">
+                    <div class="gallery">
+                        <a target="_blank" href="{{ url_for('static', filename='image/'+imagen[5]) }}">
+                        <img src="{{ url_for('static', filename='image/'+imagen[5]) }}" alt="" >
+                        </a>
+                        <div class="desc">
+                            <h2>{{imagen[1]}}</h2>
+                            <p>{{imagen[3]}} </p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+        {% endfor %}
+            <div class="clearfix"></div>
+        </main>
+        <div class="separacion"></div>
+    {% endblock %}
+       

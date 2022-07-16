@@ -1,0 +1,32 @@
+
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/about.css') }}" />
+{% endblock %}
+
+{% block contenido %}
+
+    <main>
+        <div class="vista">
+            <h2 class="titulo-about" id="rotar">Acerca de...</h2><!--Este titulo tiene una transformacion-->
+        </div>
+
+        <section>
+            {% for info in detalles %}
+            <div class="wrapper cajita">
+                <div id="leftsidebar">
+                <img src="{{ url_for('static', filename='image/'+info[2]) }}" alt="foto" class="itemImg">
+                </div>
+                <div id="parrafo">
+                <p>{{info[1]}}</p>
+                </div>
+            </div>
+            <br>
+        {% endfor %}
+
+        </section>
+    </main>
+    <div class="separacion"></div>
+{% endblock %}
+        

@@ -1,0 +1,75 @@
+{% extends 'layout.html' %}
+
+{% block css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}" />
+{% endblock %}
+
+    {% block contenido %}
+    <div class="vista1 banner"></div>
+
+        {% for unRegistro in principales %}
+        <article class="articulo destacado">
+            <div class="contenedor-texto">
+                <div>
+                    <h2 class="titulo"><a href="#">{{unRegistro[1]}}</a></h2>
+                    <p class="fecha">
+                        <time>{{unRegistro[2]}}</time>
+                    </p> 
+                </div>
+                <p class="extracto">
+                    {{unRegistro[3]}}
+                </p>
+                <a href="{{ unRegistro[4] }}" class="btn-link">Leer más</a>
+            </div>
+            <div class="contenedor-thumbnail">
+                <a href="#">
+                    <img src="{{ url_for('static', filename='image/'+unRegistro[5]) }}" alt="" />
+                </a>
+            </div>
+        </article>
+        {% endfor %}
+
+        <main class="contenido">
+
+            {% for ciudad in destinos %} 
+            <article class="articulo">
+                <div class="contenedor-thumbnail">
+                    <a href="#"><img src="{{ url_for('static', filename='image/'+ciudad[5]) }}" alt="" /></a>
+                </div>
+                <div class="contenedor-texto">
+                    <div>
+                        <h2 class="titulo">
+                            <a href="#">{{ciudad[1]}}</a>
+                        </h2>
+                        <p class="fecha">
+                            <time>{{ciudad[2]}}</time>
+                        </p>
+                    </div>
+                    <p class="extracto">{{ciudad[3]}}</p>
+                    <a href="{{ ciudad[4] }}" class="btn-link">Leer más</a>
+                </div>
+            </article>
+            {% endfor %}
+
+        </main>
+
+        <aside class="sidebar">
+            <div class="acerca-de">
+                <img src="{{ url_for('static', filename='image/acercade.png') }}" class="img-perfil" alt="" />
+                <div class="bio">
+                    <p class="titulo">¡Hola!</p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                        Impedit quae tenetur veritatis esse aperiam?
+                    </p>
+                </div>
+            </div>
+            <nav class="menu">
+                <a href="index.html">Inicio</a>
+                <a href="about.html">Acerca de</a>
+                <a href="destacados.html">Destacados</a>
+                <a href="contacto.html">Contacto</a>
+                <a href="#">Portfolio</a>
+            </nav>
+        </aside>
+        {% endblock %}
